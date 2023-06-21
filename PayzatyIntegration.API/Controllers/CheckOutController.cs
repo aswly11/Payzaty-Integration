@@ -6,7 +6,7 @@ using PayzatyIntegration.API.Services;
 namespace PayzatyIntegration.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]        
     public class CheckOutController : ControllerBase
     {
         private readonly ICheckOutService _checkOutService;

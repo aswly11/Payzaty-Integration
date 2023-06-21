@@ -21,7 +21,7 @@ namespace PayzatyIntegration.API.Controllers
             if(SecurePage != null)
             {
                 return Ok(SecurePage);
-            }
+            } 
             return BadRequest("Something Went Wrong!");
         }
 

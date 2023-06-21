@@ -11,7 +11,7 @@ namespace PayzatyIntegration.API.Controllers
     {
         private readonly ICheckOutService _checkOutService;
         public CheckOutController(ICheckOutService checkOutService)
-        {
+        { 
             _checkOutService = checkOutService;
         }
         [HttpPost("RequestSecuredPaymentPage")]

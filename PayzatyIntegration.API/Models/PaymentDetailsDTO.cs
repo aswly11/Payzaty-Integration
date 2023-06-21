@@ -1,11 +1,7 @@
 ﻿namespace PayzatyIntegration.API.Models
 {
-    public class CheckOutDetailsDTO
-    {
-        /// <summary>
-        /// checkout details id
-        /// </summary>
-        public string id { get; set; }
+    public class PaymentDetailsDTO
+    {    
         /// <summary>
         /// checkout details amount of money
         /// </summary>
@@ -25,14 +21,14 @@
         /// <summary>
         /// checkout customer information
         /// </summary>
-        public Customer customer { get; set; }       
+        public Customer customer { get; set; }
         /// <summary>
-        /// checkout paid or not
+        /// checkout response url
         /// </summary>
-        public bool paid { get; set; }
+        public string response_url { get; set; }
         /// <summary>
-        /// checkout status
+        /// checkout cancellation url
         /// </summary>
-        public string status { get; set; }
+        public string cancel_url { get; set; }
     }
 }

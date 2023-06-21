@@ -19,7 +19,7 @@ namespace PayzatyIntegration.API.Services
             httpClient.DefaultRequestHeaders.Add(PayzatyConfiguration.X_SecretKey, _payzatyConfiguration.payzatySecretKey);
 
         }
-        public async Task<SecuredPageResponse> RequestSecuredPaymentPage(CheckOutDetailsDTO checkOutDetailsDTO)
+        public async Task<SecuredPageResponse> RequestSecuredPaymentPage(PaymentDetailsDTO checkOutDetailsDTO)
         {
             var checkOutDetailsJson = JsonSerializer.Serialize(checkOutDetailsDTO); ;
             var content = new StringContent(checkOutDetailsJson, Encoding.UTF8, "application/json");
@@ -34,9 +34,17 @@ namespace PayzatyIntegration.API.Services
             return null;
         }
 
-        public CheckOutDetails GetCheckOutDetailsById(string CheckOutDetailsId)
+        public async Task<CheckOutDetailsDTO> GetCheckOutDetailsById(string CheckOutDetailsId)
         {
-            throw new NotImplementedException();
+            var response = await httpClient.GetAsync($"{_payzatyConfiguration.PayzatyUrl}checkout/{CheckOutDetailsId}");
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                return JsonSerializer.Deserialize<CheckOutDetailsDTO>(responseBody);
+            }
+
+            return null;
         }
     }
 }

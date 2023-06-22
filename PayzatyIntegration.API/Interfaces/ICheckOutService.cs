@@ -6,6 +6,6 @@ namespace PayzatyIntegration.API.Services
     {
         Task<SecuredPageResponse> RequestSecuredPaymentPage(PaymentDetailsDTO checkOutDetails);
         Task<CheckOutDetailsDTO> GetCheckOutDetailsById(string CheckOutDetailsId);
-        Task<RecurringPaymentDTO> ApplyRecurringPayments(string subscriptionId, RecurringPaymentDTO recurringPayment);
+        Task<RecurringPaymentResultDTO> ApplyRecurringPayments(string subscriptionId, RecurringPaymentDTO recurringPayment);
     }
 }

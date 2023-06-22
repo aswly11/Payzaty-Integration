@@ -5,30 +5,30 @@
         /// <summary>
         /// checkout details amount of money
         /// </summary>
-        public int amount { get; set; }
+        public int Amount { get; set; }
         /// <summary>
         /// checkout details currency
         /// </summary>
-        public string currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// checkout details language
         /// </summary>
-        public string language { get; set; }
+        public string Language { get; set; }
         /// <summary>
         /// checkout details reference
         /// </summary>
-        public string reference { get; set; }
+        public string Reference { get; set; }
         /// <summary>
         /// checkout customer information
         /// </summary>
-        public Customer customer { get; set; }
+        public Customer Customer { get; set; }
         /// <summary>
         /// checkout response url
         /// </summary>
-        public string response_url { get; set; }
+        public string Response_url { get; set; }
         /// <summary>
         /// checkout cancellation url
         /// </summary>
-        public string cancel_url { get; set; }
+        public string Cancel_url { get; set; }
     }
 }

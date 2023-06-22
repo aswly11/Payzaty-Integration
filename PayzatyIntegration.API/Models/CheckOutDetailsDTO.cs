@@ -5,34 +5,34 @@
         /// <summary>
         /// checkout details id
         /// </summary>
-        public string id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// checkout details amount of money
         /// </summary>
-        public int amount { get; set; }
+        public int Amount { get; set; }
         /// <summary>
         /// checkout details currency
         /// </summary>
-        public string currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// checkout details language
         /// </summary>
-        public string language { get; set; }
+        public string Language { get; set; }
         /// <summary>
         /// checkout details reference
         /// </summary>
-        public string reference { get; set; }
+        public string Reference { get; set; }
         /// <summary>
         /// checkout customer information
         /// </summary>
-        public Customer customer { get; set; }       
+        public Customer Customer { get; set; }       
         /// <summary>
         /// checkout paid or not
         /// </summary>
-        public bool paid { get; set; }
+        public bool Paid { get; set; }
         /// <summary>
         /// checkout status
         /// </summary>
-        public string status { get; set; }
+        public string Status { get; set; }
     }
 }

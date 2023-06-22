@@ -14,6 +14,7 @@ namespace PayzatyIntegration.API.Controllers
         { 
             _checkOutService = checkOutService;
         }
+
         [HttpPost("RequestSecuredPaymentPage")]
         public async Task<IActionResult> RequestSecuredPaymentPage([FromBody] PaymentDetailsDTO checkOutDetailsDTO)
         {
@@ -26,9 +27,20 @@ namespace PayzatyIntegration.API.Controllers
         }
 
         [HttpGet("CheckoutDetails")]
-        public async Task<IActionResult> GetCheckoutDetails([FromQuery] string CheckOutId)
+        public async Task<IActionResult> GetCheckoutDetails([FromQuery] string checkOutId)
         {
-            var SecurePage = await _checkOutService.GetCheckOutDetailsById(CheckOutId);
+            var securePage = await _checkOutService.GetCheckOutDetailsById(checkOutId);
+            if (securePage != null)
+            {
+                return Ok(securePage);
+            }
+            return BadRequest("Something Went Wrong!");
+        }
+
+        [HttpGet("RecurringPayments")]
+        public async Task<IActionResult> RecurringPayments([FromQuery] string subscription_id)
+        {
+            var SecurePage = await _checkOutService.ApplyRecurringPayments(subscription_id);
             if (SecurePage != null)
             {
                 return Ok(SecurePage);

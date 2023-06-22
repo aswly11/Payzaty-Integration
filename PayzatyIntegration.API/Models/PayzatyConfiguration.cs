@@ -6,8 +6,8 @@ namespace PayzatyIntegration.API.Models
     {
         public string PayzatyUrl { get; set; }
 
-        public string payzatyAccountNo { get; set; }
-        public string payzatySecretKey { get; set; }
+        public string PayzatyAccountNo { get; set; }
+        public string PayzatySecretKey { get; set; }
 
 
         public static readonly string X_AccountNo = "X-AccountNo";

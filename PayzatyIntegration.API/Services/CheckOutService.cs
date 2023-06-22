@@ -15,8 +15,8 @@ namespace PayzatyIntegration.API.Services
         {
             _payzatyConfiguration = payzatyConfiguration.Value;
             httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add(PayzatyConfiguration.X_AccountNo, _payzatyConfiguration.payzatyAccountNo);
-            httpClient.DefaultRequestHeaders.Add(PayzatyConfiguration.X_SecretKey, _payzatyConfiguration.payzatySecretKey);
+            httpClient.DefaultRequestHeaders.Add(PayzatyConfiguration.X_AccountNo, _payzatyConfiguration.PayzatyAccountNo);
+            httpClient.DefaultRequestHeaders.Add(PayzatyConfiguration.X_SecretKey, _payzatyConfiguration.PayzatySecretKey);
 
         }
         public async Task<SecuredPageResponse> RequestSecuredPaymentPage(PaymentDetailsDTO checkOutDetailsDTO)
@@ -34,14 +34,28 @@ namespace PayzatyIntegration.API.Services
             return null;
         }
 
-        public async Task<CheckOutDetailsDTO> GetCheckOutDetailsById(string CheckOutDetailsId)
+        public async Task<CheckOutDetailsDTO> GetCheckOutDetailsById(string checkOutDetailsId)
         {
-            var response = await httpClient.GetAsync($"{_payzatyConfiguration.PayzatyUrl}checkout/{CheckOutDetailsId}");
+            var response = await httpClient.GetAsync($"{_payzatyConfiguration.PayzatyUrl}checkout/{checkOutDetailsId}");
             if (response.IsSuccessStatusCode)
             {
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 return JsonSerializer.Deserialize<CheckOutDetailsDTO>(responseBody);
+            }
+
+            return null;
+        }
+        public async Task<RecurringPaymentDTO> ApplyRecurringPayments(string subscriptionId, RecurringPaymentDTO recurringPayment)
+        {
+            var recurringPaymentJson = JsonSerializer.Serialize(recurringPayment); ;
+            var payment = new StringContent(recurringPaymentJson, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync($"{_payzatyConfiguration.PayzatyUrl}subscription/{subscriptionId}/pay", payment);
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                return JsonSerializer.Deserialize<RecurringPaymentDTO>(responseBody);
             }
 
             return null;

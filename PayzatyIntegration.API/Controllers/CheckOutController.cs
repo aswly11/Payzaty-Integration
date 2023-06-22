@@ -38,9 +38,9 @@ namespace PayzatyIntegration.API.Controllers
         }
 
         [HttpGet("RecurringPayments")]
-        public async Task<IActionResult> RecurringPayments([FromQuery] string subscription_id)
+        public async Task<IActionResult> RecurringPayments([FromQuery] string subscription_id, [FromBody] RecurringPaymentDTO recurringPayment)
         {
-            var SecurePage = await _checkOutService.ApplyRecurringPayments(subscription_id);
+            var SecurePage = await _checkOutService.ApplyRecurringPayments(subscription_id, recurringPayment);
             if (SecurePage != null)
             {
                 return Ok(SecurePage);

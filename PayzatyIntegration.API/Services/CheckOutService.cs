@@ -46,6 +46,7 @@ namespace PayzatyIntegration.API.Services
 
             return null;
         }
+
         public async Task<RecurringPaymentDTO> ApplyRecurringPayments(string subscriptionId, RecurringPaymentDTO recurringPayment)
         {
             var recurringPaymentJson = JsonSerializer.Serialize(recurringPayment); ;

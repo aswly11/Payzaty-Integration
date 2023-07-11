@@ -7,7 +7,7 @@ namespace PayzatyIntegration.API.Controllers
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CardController : ControllerBase
-	{
+	{ 
 		private readonly ICardService _cardService;
 		public CardController (ICardService cardService)
 		{

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using PayzatyIntegration.API.Interfaces;
 using PayzatyIntegration.API.Models;
 using PayzatyIntegration.API.Services;
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICheckOutService, CheckOutService>();
+builder.Services.AddScoped<ICardService, CardService>();
 
 builder.Services.Configure<PayzatyConfiguration>(builder.Configuration.GetSection("AppSettings:PayzatyConfiguration"));
 

@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using PayzatyIntegration.API.Models;
 using System.Text;
 using System.Text.Json;
+using PayzatyIntegration.API.Interfaces;
 
 namespace PayzatyIntegration.API.Services
 {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PayzatyIntegration.API.Models;
 using PayzatyIntegration.API.Services;
+using PayzatyIntegration.API.Interfaces;
 
 namespace PayzatyIntegration.API.Controllers
 {
@@ -35,5 +36,5 @@ namespace PayzatyIntegration.API.Controllers
             }
             return BadRequest("Something Went Wrong!");
         }
-    }
+	}
 }

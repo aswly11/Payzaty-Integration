@@ -11,7 +11,7 @@ namespace PayzatyIntegration.API.Controllers
 		private readonly ICardService _cardService;
 		public CardController (ICardService cardService)
 		{
-			_cardService = cardService;
+			_cardService = cardService; 
 		}
 
 		[HttpPost("check")]

@@ -7,19 +7,19 @@ using PayzatyIntegration.API.Interfaces;
 namespace PayzatyIntegration.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]        
+    [ApiController]
     public class CheckOutController : ControllerBase
     {
         private readonly ICheckOutService _checkOutService;
         public CheckOutController(ICheckOutService checkOutService)
-        { 
+        {
             _checkOutService = checkOutService;
         }
         [HttpPost("RequestSecuredPaymentPage")]
         public async Task<IActionResult> RequestSecuredPaymentPage([FromBody] PaymentDetailsDTO checkOutDetailsDTO)
         {
-            var SecurePage= await _checkOutService.RequestSecuredPaymentPage(checkOutDetailsDTO);
-            if(SecurePage != null)
+            var SecurePage = await _checkOutService.RequestSecuredPaymentPage(checkOutDetailsDTO);
+            if (SecurePage != null)
             {
                 return Ok(SecurePage);
             }
@@ -36,5 +36,20 @@ namespace PayzatyIntegration.API.Controllers
             }
             return BadRequest("Something Went Wrong!");
         }
-	}
+
+        /// <summary>
+        /// Handles a payment request using card payment details.
+        /// </summary>
+        [HttpPost("pay")]
+        public async Task<IActionResult> RequestCardPayment([FromBody] CardPaymentDetailsDTO cardPaymentDetailsDTO)
+        {
+            var cardPaymentResponse = await _checkOutService.RequestCardPayment(cardPaymentDetailsDTO);
+
+            if (cardPaymentResponse != null)
+            {
+                return Ok(cardPaymentResponse);
+            }
+            return BadRequest("Card payment processing failed!");
+        }
+    }
 }

@@ -48,5 +48,26 @@ namespace PayzatyIntegration.API.Services
 
             return null;
         }
+
+        /// <summary>
+        /// Sends a payment request using the provided card payment details.
+        /// </summary>
+        public async Task<CardPaymentResponse> RequestCardPayment(CardPaymentDetailsDTO cardPaymentDetailsDTO)
+        {
+            var cardPaymentDetailsJson = JsonSerializer.Serialize(cardPaymentDetailsDTO);
+
+            var content = new StringContent(cardPaymentDetailsJson, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync(_payzatyConfiguration.PayzatyUrl + "checkout/pay", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                return JsonSerializer.Deserialize<CardPaymentResponse>(responseBody);
+            }
+
+            return null;
+        }
     }
 }

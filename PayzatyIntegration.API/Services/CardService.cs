@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using PayzatyIntegration.API.Interfaces;
 using PayzatyIntegration.API.Models;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 
 namespace PayzatyIntegration.API.Services

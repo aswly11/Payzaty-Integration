@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using PayzatyIntegration.API.Models;
 using System.Text;
 using System.Text.Json;
